@@ -4,7 +4,7 @@ import css from "./filmItems.module.css";
 
 export const FilmItems = ({ query }) => {
   const [data, setData] = useState(null);
-  const [page, setPage] = useState("1");
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (query === "") {
@@ -13,7 +13,7 @@ export const FilmItems = ({ query }) => {
 
     const getFilms = async () => {
       try {
-        const dataFilms = await feachFilms(query);
+        const dataFilms = await feachFilms(query, page);
         setData(dataFilms.Search);
       } catch (error) {
         console.log(error);
@@ -21,7 +21,7 @@ export const FilmItems = ({ query }) => {
     };
 
     getFilms();
-  }, [query]);
+  }, [query, page]);
 
   console.log(data);
   return (
@@ -35,9 +35,11 @@ export const FilmItems = ({ query }) => {
               src={value.Poster}
               alt={value.Title}
             />
-            <h2>{}</h2>
           </li>
         ))}
+      <button onClick={() => setPage(page + 1)} type="button">
+        Next Page
+      </button>
     </ul>
   );
 };
