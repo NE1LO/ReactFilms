@@ -1,0 +1,49 @@
+.header {
+  max-width: 100%;
+  height: 5vh;
+  padding: 30px 0 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonFilms {
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.SearchFilms {
+  width: 250px;
+  height: 35px;
+  border-radius: 20px;
+  border: none;
+  padding: 0 20px;
+  margin-right: 20px;
+  color: #b2b1b1;
+  background-color: #3f3f3f;
+  font-weight: 300;
+  transition: 0.5s;
+}
+
+.SearchFilms:hover,
+.SearchFilms:focus {
+  width: 270px;
+  border: none;
+  outline: none;
+}
+
+.searchFilmsButton {
+  background-color: #3f3f3f;
+  font-weight: 300;
+  color: #b2b1b1;
+  width: 80px;
+  height: 35px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.searchFilmsButton:hover {
+  background-color: #505050;
+}
