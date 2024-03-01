@@ -1,10 +1,10 @@
 import { feachFilms } from "../../films-api";
 import { useState, useEffect } from "react";
 import css from "./filmItems.module.css";
+import toast from "react-hot-toast";
 
-export const FilmItems = ({ query }) => {
-  const [data, setData] = useState(null);
-  const [page, setPage] = useState(1);
+export const FilmItems = ({ query, page, moreFilms }) => {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     if (query === "") {
@@ -14,8 +14,9 @@ export const FilmItems = ({ query }) => {
     const getFilms = async () => {
       try {
         const dataFilms = await feachFilms(query, page);
-        setData(dataFilms.Search);
+        setData((prevData) => [...prevData, ...dataFilms.Search]);
       } catch (error) {
+        toast.error("Ooops, something is not working");
         console.log(error);
       }
     };
@@ -37,7 +38,7 @@ export const FilmItems = ({ query }) => {
             />
           </li>
         ))}
-      <button onClick={() => setPage(page + 1)} type="button">
+      <button onClick={moreFilms} type="button">
         Next Page
       </button>
     </ul>
